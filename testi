@@ -1,0 +1,10 @@
+let ab = `{
+    
+    a : function() {
+        console.log('sl');
+    }
+}`
+let cc = `{{"name":”Obaseki Nosa”,location:”Lagos”}}`
+const ali = JSON.parse(cc)
+console.log(ali)
+// ali.a()
