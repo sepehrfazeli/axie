@@ -14,7 +14,7 @@ let y = [];
 let i = 0;
 
 axiosRetry(axios, {
-    retries: 100, // number of retries
+    retries: 2, // number of retries
     retryDelay: (retryCount) => {
         console.log(`retry attempt: ${retryCount}`);
         return retryCount * 2000; // time interval between retries
@@ -44,6 +44,7 @@ const kar = async () => {
                     }
                     y = y.slice(1);
 
+
                 } else {
                     Fetch1()
                 }
@@ -60,7 +61,7 @@ const kar = async () => {
     await Fetch1().then(async res => {
         y.forEach(async x => {
             let resp = await axios
-                .get(`https://explorer.roninchain.com/_next/data/miBI2oD5nKpZrP0yuL83B/tx/${x}.json`)
+                .get(`https://explorer.roninchain.com/_next/data/lNQyeI8jVUhj9VU9VhQ-a/tx/${x}.json`)
                 .then(async response => {
                     if (response.status === 200) {
                         // i++;
@@ -96,10 +97,11 @@ const kar = async () => {
 
                                 if (price <= maxPrice) {
                                     // trigger = false;
-                                    await open(link)
-                                    console.log('\u0007');
-                                    console.log('\u0007');
-                                    console.log('\u0007');
+                                    if (!result.some(x => x === id)) {
+                                        result.push(id);
+                                        await open(link)
+                                        console.log('\u0007');
+                                    }
                                 }
                                 console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
                             }

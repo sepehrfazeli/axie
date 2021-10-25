@@ -1,143 +1,66 @@
 const fetch = require("node-fetch");
-const siteUrl = "https://explorer.roninchain.com/address/ronin:213073989821f738a7ba3520c3d31a1f9ad31bbd/txs";
-const axios = require("axios");
-const axiosRetry = require('axios-retry');
-const cheerio = require("cheerio");
-
-
-let result = [];
-let price = 0.06;
-let Ttimer = 2000;
-let trigger = false;
-let y = [];
-let i = 0;
-
-axiosRetry(axios, {
-    retries: 100, // number of retries
-    retryDelay: (retryCount) => {
-        console.log(`retry attempt: ${retryCount}`);
-        return retryCount * 2000; // time interval between retries
-    },
-    retryCondition: (error) => {
-        // if retry condition is not specified, by default idempotent requests are retried
-        return error.response.status === 503;
-    },
-});
-
-
 
 const kar = async () => {
-    const Fetch1 = async () => {
-        let res = await axios
-            .get(siteUrl)
-            .then(response => {
-                if (response.status === 200) {
-                    const $ = cheerio.load(response.data);
-
-                    try {
-                        $('.pr-20').each(function (i, e) {
-                            y[i] = $(this).text();
-                        });
-                    } catch (e) {
-                        console.log('error')
-                    }
-                    y = y.slice(1);
-
-                } else {
-                    Fetch1()
-                }
-            }).catch((err) => {
-                // if (err.response.status !== 200) {
-                //     throw new Error(`API call failed with status code: ${err.response.status} after 3 retry attempts`);
-                // }
-            });
-    }
-
-    console.clear();
-    console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
-
-    await Fetch1().then(async res => {
-        y.forEach(async x => {
-            let resp = await fetch(`https://explorer.roninchain.com/_next/data/miBI2oD5nKpZrP0yuL83B/tx/${x}.json`, {
-                "credentials": "include",
-                "headers": {
-                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:93.0) Gecko/20100101 Firefox/93.0",
-                    "Accept": "*/*",
-                    "Accept-Language": "en-US,en;q=0.5",
-                    "Sec-Fetch-Dest": "empty",
-                    "Sec-Fetch-Mode": "cors",
-                    "Sec-Fetch-Site": "same-origin"
-                },
-                "referrer": "https://explorer.roninchain.com/address/ronin:213073989821f738a7ba3520c3d31a1f9ad31bbd/txs?p=400",
-                "method": "GET",
-                "mode": "cors"
-            }).then(async response => {
-                try {
-                    i++;
-                    console.log(i);
-                    console.log(response.status);
-
-                    if (response.ok) {
-                        return await response.json();
-                    }
-                    if (response.status === 500) {
-                        const dbug1 = await response;
-                        console.log(dbug1);
-                    }
 
 
-                } catch (e) {
-                    console.log('\x1b[32m%s\x1b[0m', 'error')
-                }
-                // if (response.ok) {
-                //     return response.json();
-                // }
-            }, networkError => {
-                console.log(networkError.message);
-            }).then(async jsonResponse => {
-                try {
-                    list = await jsonResponse;
-                    console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
-                    let status;
-                    try {
-                        status = await list.pageProps.decodedAction.action;
-                        if (list) console.log(status);
-                        // console.log(x);
-                    } catch (e) {
-                        status = 'Error';
-                        console.log(status + `\t${x}`);
-                        console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
-                    }
-                    // console.log(`${status}`);
-                    if (status[1] === 'r') {
-                        const id = list.pageProps.decodedAction.assets[0].tokenID;
-                        let price;
-                        try {
-                            price = list.pageProps.decodedCallData.args._startingPrices[0] / 1000000000000000000;
-                        } catch (e) {
-                            price = 11;
-                        }
-                        const link = `https://marketplace.axieinfinity.com/axie/${id}/`
-                        console.log(`${price}\t${status}\t${link}`);
-
-                        if (price < 0.01) trigger = false;
-                        console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
-                    }
-                } catch (e) {
-                    console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
-                    console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
-                }
-            });
-
-        });
+    fetch('https://api.roninchain.com/rpc', {
+        method: 'POST',
+        headers: {
+            'authority': 'api.roninchain.com',
+            'sec-ch-ua': '"Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"',
+            'accept': 'application/json',
+            'dnt': '1',
+            'sec-ch-ua-mobile': '?0',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
+            'content-type': 'application/json',
+            'origin': 'https://marketplace.axieinfinity.com',
+            'sec-fetch-site': 'cross-site',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-dest': 'empty',
+            'referer': 'https://marketplace.axieinfinity.com/',
+            'accept-language': 'en-US,en;q=0.9,fa;q=0.8,ur;q=0.7,ps;q=0.6',
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify({
+            "id": 7,
+            "jsonrpc": "2.0",
+            "params": [{
+                "to": "0xc99a6a985ed2cac1ef41640596c5a5f9f4e19ef5",
+                "data": "0x70a0823100000000000000000000000058058c5d68fdbf6c81f14ce4af1fc61e364edbf8",
+                "from": "0x58058c5d68fdbf6c81f14ce4af1fc61e364edbf8"
+            }, "latest"],
+            "method": "eth_call"
+        })
     });
-    if (trigger) {
-        console.log('waiting...');
-        setTimeout(x => {}, 20000);
-        kar();
-    }
+
+    fetch('https://api.roninchain.com/rpc', {
+        method: 'POST',
+        headers: {
+            'authority': 'api.roninchain.com',
+            'sec-ch-ua': '"Chromium";v="92", " Not A;Brand";v="99", "Google Chrome";v="92"',
+            'accept': 'application/json',
+            'dnt': '1',
+            'sec-ch-ua-mobile': '?0',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
+            'content-type': 'application/json',
+            'origin': 'https://marketplace.axieinfinity.com',
+            'sec-fetch-site': 'cross-site',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-dest': 'empty',
+            'referer': 'https://marketplace.axieinfinity.com/',
+            'accept-language': 'en-US,en;q=0.9,fa;q=0.8,ur;q=0.7,ps;q=0.6',
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify({
+            "id": 8,
+            "jsonrpc": "2.0",
+            "params": [{
+                "to": "0x213073989821f738a7ba3520c3d31a1f9ad31bbd",
+                "data": "0x4d51bfc40000000000000000000000001fdddf53fd541e0399c97908da69e346bfd61fb7000000000000000000000000c99a6a985ed2cac1ef41640596c5a5f9f4e19ef500000000000000000000000000000000000000000000000000750e0bbe2a404100000000000000000000000000000000000000000000000000000000000569c13c61757d432b0d91bd6a77076e442cabc5468439aa0ace23998c7dc5c729f93c",
+                "from": "0x58058c5d68fdbf6c81f14ce4af1fc61e364edbf8"
+            }],
+            "method": "eth_estimateGas"
+        })
+    });
 }
-
-
-
 kar();

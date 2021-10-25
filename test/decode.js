@@ -49,8 +49,6 @@ var _0x44c3 = ['dusk', 'Inferior', 'reptile', 'defaultDefense', 'nrg', 'mech', '
         };
     _0x2ff4ed();
 }(_0x44c3, 0x134));
-
-
 var _0x13a7 = function (_0x31b2e3, _0x44c3ed) {
     _0x31b2e3 = _0x31b2e3 - 0x0;
     var _0x13a748 = _0x44c3[_0x31b2e3];
@@ -61,7 +59,7 @@ var _0x2b6eb9 = function () {
         return function (_0x1ce171, _0x329acb) {
             var _0x4bfb24 = _0x5cb26e ? function () {
                 if (_0x329acb) {
-                    var _0xddd3f = _0x329acb[6](_0x1ce171, arguments);
+                    var _0xddd3f = _0x329acb[_0x13a7('0x6')](_0x1ce171, arguments);
                     return _0x329acb = null, _0xddd3f;
                 }
             } : function () {};
@@ -70,19 +68,19 @@ var _0x2b6eb9 = function () {
     }(),
     _0xffafb8 = _0x2b6eb9(this, function () {
         var _0x5883f6 = function () {
-            var _0x4031b0 = _0x5883f6[16](24)()[16](2);
+            var _0x4031b0 = _0x5883f6[_0x13a7('0x10')](_0x13a7('0x18'))()[_0x13a7('0x10')](_0x13a7('0x2'));
             return !_0x4031b0['test'](_0xffafb8);
         };
         return _0x5883f6();
     });
 _0xffafb8();
 var ability_cards = {};
-$[37](3, function (_0x3096c3) {
-    $[44](_0x3096c3, function (_0x30b33b, _0xf2407b) {
-        ability_cards[_0xf2407b[17]] = _0xf2407b;
-        if (_0xf2407b[17][45]('--') !== -0x1) {
-            var _0x2002b7 = _0xf2407b[17][46]('--');
-            for (i = 0x0; i < _0x2002b7[10]; i++) {
+$[_0x13a7('0x25')](_0x13a7('0x3'), function (_0x3096c3) {
+    $[_0x13a7('0x2c')](_0x3096c3, function (_0x30b33b, _0xf2407b) {
+        ability_cards[_0xf2407b[_0x13a7('0x11')]] = _0xf2407b;
+        if (_0xf2407b[_0x13a7('0x11')][_0x13a7('0x2d')]('--') !== -0x1) {
+            var _0x2002b7 = _0xf2407b[_0x13a7('0x11')][_0x13a7('0x2e')]('--');
+            for (i = 0x0; i < _0x2002b7[_0x13a7('0xa')]; i++) {
                 ability_cards[_0x2002b7[i]] = _0xf2407b;
             }
         }
@@ -97,15 +95,15 @@ function getScoreClass(_0x43da83) {
 }
 
 function getScoreText(_0x15197b) {
-    var _0x2ad4eb = 29;
-    if (_0x15197b >= 0x5a) _0x2ad4eb = 35;
+    var _0x2ad4eb = _0x13a7('0x1d');
+    if (_0x15197b >= 0x5a) _0x2ad4eb = _0x13a7('0x23');
     else {
-        if (_0x15197b >= 0x50) _0x2ad4eb = 8;
+        if (_0x15197b >= 0x50) _0x2ad4eb = _0x13a7('0x8');
         else {
             if (_0x15197b >= 0x46) _0x2ad4eb = 'Decent';
             else {
-                if (_0x15197b >= 0x3c) _0x2ad4eb = 41;
-                else _0x15197b >= 0x32 && (_0x2ad4eb = 43);
+                if (_0x15197b >= 0x3c) _0x2ad4eb = _0x13a7('0x29');
+                else _0x15197b >= 0x32 && (_0x2ad4eb = _0x13a7('0x2b'));
             }
         }
     }
@@ -120,48 +118,48 @@ function getAbilityStats(_0x5e11cd, _0x19d47d, _0x12a59e) {
             'def': 0x0,
             'nrg': 0x0
         };
-    $[44](_0x19d47d, function (_0x4c7509, _0x90233) {
-        _0x90233['id'] = _0x90233['id'][9](/_/g, '-');
+    $[_0x13a7('0x2c')](_0x19d47d, function (_0x4c7509, _0x90233) {
+        _0x90233['id'] = _0x90233['id'][_0x13a7('0x9')](/_/g, '-');
         if (typeof ability_cards[_0x90233['id']] !== 'undefined') {
-            _0x3929c9[_0x90233[42]['toLowerCase']()] = 0x1, _0x3929c9[_0x90233['id']] = 0x1;
-            if (typeof _0x3929c9[40 + ability_cards[_0x90233['id']][26]] == 27) _0x3929c9[40 + ability_cards[_0x90233['id']][26]] = 0x0;
-            _0x3929c9[40 + ability_cards[_0x90233['id']][26]]++, _0x2ef9a2[25] += parseInt(ability_cards[_0x90233['id']][23]), _0x2ef9a2[34] += parseInt(ability_cards[_0x90233['id']][31]), _0x2ef9a2[32] += parseInt(ability_cards[_0x90233['id']][26]);
+            _0x3929c9[_0x90233[_0x13a7('0x2a')]['toLowerCase']()] = 0x1, _0x3929c9[_0x90233['id']] = 0x1;
+            if (typeof _0x3929c9[_0x13a7('0x28') + ability_cards[_0x90233['id']][_0x13a7('0x1a')]] == _0x13a7('0x1b')) _0x3929c9[_0x13a7('0x28') + ability_cards[_0x90233['id']][_0x13a7('0x1a')]] = 0x0;
+            _0x3929c9[_0x13a7('0x28') + ability_cards[_0x90233['id']][_0x13a7('0x1a')]]++, _0x2ef9a2[_0x13a7('0x19')] += parseInt(ability_cards[_0x90233['id']][_0x13a7('0x17')]), _0x2ef9a2[_0x13a7('0x22')] += parseInt(ability_cards[_0x90233['id']][_0x13a7('0x1f')]), _0x2ef9a2[_0x13a7('0x20')] += parseInt(ability_cards[_0x90233['id']][_0x13a7('0x1a')]);
         }
-    }), $[44](_0x19d47d, function (_0x6dd5d5, _0x28300a) {
-        _0x28300a['id'] = _0x28300a['id'][9](/_/g, '-');
+    }), $[_0x13a7('0x2c')](_0x19d47d, function (_0x6dd5d5, _0x28300a) {
+        _0x28300a['id'] = _0x28300a['id'][_0x13a7('0x9')](/_/g, '-');
         var _0x2e545e = 0x0;
-        if (typeof ability_cards[_0x28300a['id']] !== 27) {
-            _0x2e545e += parseInt(ability_cards[_0x28300a['id']][18]);
-            if (!ability_cards[_0x28300a['id']][4] && (!ability_cards[_0x28300a['id']][5] && !ability_cards[_0x28300a['id']]['Inferior']) || ability_cards[_0x28300a['id']][5] && typeof _0x3929c9[11] !== 27 || ability_cards[_0x28300a['id']]['aquatic_only'] && typeof _0x3929c9[19] !== 27) {
-                var _0x3ff72a = parseInt(ability_cards[_0x28300a['id']][7]);
-                typeof _0x3929c9[21] !== 27 && ability_cards[_0x28300a['id']][39] && (_0x3ff72a *= 1.3), _0x2e545e += _0x3ff72a;
+        if (typeof ability_cards[_0x28300a['id']] !== _0x13a7('0x1b')) {
+            _0x2e545e += parseInt(ability_cards[_0x28300a['id']][_0x13a7('0x12')]);
+            if (!ability_cards[_0x28300a['id']][_0x13a7('0x4')] && (!ability_cards[_0x28300a['id']][_0x13a7('0x5')] && !ability_cards[_0x28300a['id']][_0x13a7('0x1')]) || ability_cards[_0x28300a['id']][_0x13a7('0x5')] && typeof _0x3929c9[_0x13a7('0xb')] !== _0x13a7('0x1b') || ability_cards[_0x28300a['id']]['aquatic_only'] && typeof _0x3929c9[_0x13a7('0x13')] !== _0x13a7('0x1b')) {
+                var _0x3ff72a = parseInt(ability_cards[_0x28300a['id']][_0x13a7('0x7')]);
+                typeof _0x3929c9[_0x13a7('0x15')] !== _0x13a7('0x1b') && ability_cards[_0x28300a['id']][_0x13a7('0x27')] && (_0x3ff72a *= 1.3), _0x2e545e += _0x3ff72a;
             }
-            typeof ability_cards[_0x28300a['id']][20] !== 'undefiend' && $['each'](ability_cards[_0x28300a['id']]['combo'], function (_0x1995e3, _0x29e99c) {
+            typeof ability_cards[_0x28300a['id']][_0x13a7('0x14')] !== 'undefiend' && $['each'](ability_cards[_0x28300a['id']]['combo'], function (_0x1995e3, _0x29e99c) {
                 if (typeof _0x3929c9[_0x29e99c] !== 'undefined') _0x2e545e *= 1.3;
             });
-            var _0x321850 = _0x28300a[42][12]();
-            if (_0x5e11cd == _0x321850) _0x2e545e += parseInt(ability_cards[_0x28300a['id']][47]);
+            var _0x321850 = _0x28300a[_0x13a7('42')][_0x13a7('12')]();
+            if (_0x5e11cd == _0x321850) _0x2e545e += parseInt(ability_cards[_0x28300a['id']][_0x13a7('47')]);
             else switch (_0x5e11cd) {
-                case 33:
+                case _0x13a7('33'):
                 case 'hidden_1':
-                    (_0x321850 == 'dusk' || _0x321850 == 14) && (_0x2e545e += Math[13](parseInt(ability_cards[_0x28300a['id']][47]) / 0x2));
+                    (_0x321850 == _0x13a7('0') || _0x321850 == _0x13a7('14')) && (_0x2e545e += Math[_0x13a7('13')](parseInt(ability_cards[_0x28300a['id']][_0x13a7('47')]) / 2));
                     break;
-                case 22:
-                case 15:
-                    (_0x321850 == 38 || _0x321850 == 19) && (_0x2e545e += Math[13](parseInt(ability_cards[_0x28300a['id']][47]) / 0x2));
+                case _0x13a7('22'):
+                case _0x13a7('15'):
+                    (_0x321850 == _0x13a7('38') || _0x321850 == _0x13a7('19')) && (_0x2e545e += Math[_0x13a7('13')](parseInt(ability_cards[_0x28300a['id']][_0x13a7('47')]) / 2));
                     break;
-                case 28:
-                case 36:
-                    (_0x321850 == 30 || _0x321850 == 11) && (_0x2e545e += Math[13](parseInt(ability_cards[_0x28300a['id']][47]) / 0x2));
+                case _0x13a7('28'):
+                case _0x13a7('36'):
+                    (_0x321850 == _0x13a7('30') || _0x321850 == _0x13a7('11')) && (_0x2e545e += Math[_0x13a7('13')](parseInt(ability_cards[_0x28300a['id']][_0x13a7('47')]) / 2));
                     break;
             }
         }
         _0x2559a3 += _0x2e545e;
     });
-    if (typeof _0x3929c9[21] !== 27 && _0x3929c9[21] > 0x1) _0x2559a3 *= 0.8;
+    if (typeof _0x3929c9[_0x13a7('0x15')] !== _0x13a7('0x1b') && _0x3929c9[_0x13a7('0x15')] > 0x1) _0x2559a3 *= 0.8;
     if (_0x12a59e['hp'] >= 0x32 && _0x2ef9a2['def'] >= 0xc8) _0x2559a3 *= 1.175;
-    else _0x2ef9a2[25] >= 0x12c && (_0x2559a3 *= 1.1);
-    return _0x2559a3 = Math[13](_0x2559a3 / 0xa), {
+    else _0x2ef9a2[_0x13a7('0x19')] >= 0x12c && (_0x2559a3 *= 1.1);
+    return _0x2559a3 = Math[_0x13a7('0xd')](_0x2559a3 / 0xa), {
         'ability_score': _0x2559a3,
         'card_stats': _0x2ef9a2
     };

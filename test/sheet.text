@@ -1,0 +1,67 @@
+'Inferior',
+'reptile',
+'defaultDefense',
+'nrg',
+'mech',
+'def',
+'Excellent',
+'hidden_3',
+'getJSON',
+'bird',
+'combo_bonus',
+'energy_',
+'Average',
+'class',
+'Moderate',
+'each',
+'indexOf',
+'split',
+'ability_score_class',
+'beast',
+'aquatic_only',
+'^([^ ]+( +[^ ]+)+)+[^ ]}',
+'/func/proxy_axiecards.php',
+'chain_only',
+'plant_only',
+'apply',
+'ability_score_extra',
+'Good',
+'replace',
+'length',
+'plant',
+'toLowerCase',
+'ceil',
+'bug',
+'hidden_2',
+'constructor',
+'filter_id',
+'ability_score',
+'aquatic',
+'combo',
+'energy_0',
+'dawn',
+'defaultAttack',
+'return /" + this + "/',
+'atk',
+'defaultEnergy',
+'undefined'
+
+
+35  -> 15(0xf)
+8   -> 36(0x24)
+
+ 0 = 'dusk'
+
+ 0
+ 38
+ 30
+
+
+ 0
+ 5
+ 10
+ 20
+ 31
+ 34
+ 39
+ 42
