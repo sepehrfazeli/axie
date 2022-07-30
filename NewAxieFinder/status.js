@@ -1,5 +1,5 @@
 let list, parts, astat;
-const id = '2668858';
+// const id = '2668858';
 const fetch = require("node-fetch");
 const axies = [ //back-mouth-horn-tail
     [ //axie1 speed = 61
@@ -145,8 +145,8 @@ const goodAxie = async (parts, stats) => {
 
 
         // console.log(`\n\taxie${i+1}\n`);
-        if (point === 4) {
-            console.log(`\n\taxie${i+1}\n`);
+        if (point === 3) {
+            // console.log(`\n\taxie${i+1}\n`);
             switch (i + 1) {
                 case 1:
                     return stats.speed === 61;
@@ -187,8 +187,16 @@ const goodAxie = async (parts, stats) => {
 
 
 
+const status = async (id) => {
+    return await fetching(id).then(async x => {
+        return await goodAxie(parts, astat);
+        // console.log(ans);
+    })
+    // console.log(ans)
+};
+// status(7849234).then(r =>{
+//     console.log(r)
+// })
 
-fetching(id).then(async x => {
-    const ans = await goodAxie(parts, astat);
-    console.log(ans);
-})
+module.exports = { status }
+

@@ -4,12 +4,13 @@ const axios = require("axios");
 const axiosRetry = require('axios-retry');
 const cheerio = require("cheerio");
 const open = require('open');
+const worth = require('./status');
 
 
 let result = [];
-let maxPrice = 0.027;
+let maxPrice = 0.046;
 let Ttimer = 2000;
-let trigger = true;
+let trigger = false;
 let y = [];
 let i = 0;
 
@@ -61,7 +62,7 @@ const kar = async () => {
     await Fetch1().then(async res => {
         y.forEach(async x => {
             let resp = await axios
-                .get(`https://explorer.roninchain.com/_next/data/lNQyeI8jVUhj9VU9VhQ-a/tx/${x}.json`)
+                .get(`https://explorer.roninchain.com/tx/${x}`)
                 .then(async response => {
                     if (response.status === 200) {
                         // i++;
@@ -69,42 +70,52 @@ const kar = async () => {
                         try {
                             list = await response.data;
                             // console.log(list)
+                            const $ = cheerio.load(response.data);
+                            console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
+                            console.log('we are in')
+                            console.log($('li:first')[0].text())
+                            console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
+                            
                             // console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
                             let status;
-                            try {
-                                status = await list.pageProps.decodedAction.action;
-                                // if (list) console.log(status);
-                                // console.log(x);
-                            } catch (e) {
-                                console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
-                                status = 'Error';
-                                console.log(response.data)
-                                console.log(e + `\t${x}`);
-                                // console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
-                            }
-                            // console.log(`${status}`);
-                            if (status[1] === 'r') {
-                                const id = list.pageProps.decodedAction.assets[0].tokenID;
-                                let price;
-                                try {
-                                    price = list.pageProps.decodedCallData.args._startingPrices[0] / 1000000000000000000;
-                                    price = price.toFixed(4)
-                                } catch (e) {
-                                    price = 11;
-                                }
-                                const link = `https://marketplace.axieinfinity.com/axie/${id}/`
-                                console.log(`${price}\t${status}\t${link}`);
+                            /*
+                                                try {
+                                                        status = await list.pageProps.decodedAction.action;
+                                                        // if (list) console.log(status);
+                                                        // console.log(x);
+                                                    } catch (e) {
+                                                        console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
+                                                        status = 'Error';
+                                                        // console.log(response.data)
+                                                        console.log(e + `\t${x}`);
+                                                        // console.log('\x1b[31m%s\x1b[0m', list ? 'true' : 'false');
+                                                    }
+                                                    // console.log(`${status}`);
+                                                    if (status[1] === 'r') {
+                                                        const id = list.pageProps.decodedAction.assets[0].tokenID;
+                                                        let price;
+                                                        try {
+                                                            price = list.pageProps.decodedCallData.args._startingPrices[0] / 1000000000000000000;
+                                                            price = price.toFixed(4)
+                                                        } catch (e) {
+                                                            price = 11;
+                                                        }
+                                                        const link = `https://marketplace.axieinfinity.com/axie/${id}/?${price}=`
+                                                        console.log(`${price}\t${status}\t${link}`);
 
-                                if (price <= maxPrice) {
-                                    // trigger = false;
-                                    if (!result.some(x => x === id)) {
-                                        result.push(id);
-                                        await open(link)
-                                        console.log('\u0007');
-                                    }
-                                }
-                                console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
-                            }
+                                                        if (price <= maxPrice) {
+                                                            // trigger = false;
+                                                            if (!result.some(async x => x === id)) {
+                                                                const test = await worth.status(id);
+                                                                if (test) {
+                                                                    result.push(id);
+                                                                    await open(link);
+                                                                    console.log('\u0007');
+                                                                }
+                                                            }
+                                                        }
+                                                        console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
+                                                    }*/
                         } catch (e) {
                             console.log('\x1b[32m%s\x1b[0m', '----------------------------------------------------------------------------------');
                         }
@@ -117,7 +128,7 @@ const kar = async () => {
                     //     throw new Error(`API call failed with status code: ${err.response.status} after 3 retry attempts`);
                     // }
                 });
-
+                throw new Error(`DONE`);
         });
     });
     if (trigger) {

@@ -53,6 +53,7 @@ const listUpdater = async () => {
 const check = async (maxPrice) => {
 
     console.clear();
+    console.log(list);
 
 
     for (let item of list) {
@@ -89,6 +90,8 @@ const check = async (maxPrice) => {
 
         } catch (e) { }
     }
+
+    console.log(result);
 
 
 
